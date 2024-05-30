@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFC.js Viewer</title>
+    <title>IFC.js Viewer - Hello World</title>
     <style>
-        body { margin: 0; }
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide overflow to make the viewer full screen */
+        }
         #viewer-container {
-            width: 100%;
+            width: 100vw; /* Full viewport width */
             height: 100vh; /* Full viewport height */
         }
     </style>
@@ -15,18 +18,19 @@
 <body>
     <div id="viewer-container"></div>
 
+    <!-- Import the IFC.js library -->
     <script type="module">
-        import { IfcViewerAPI } from 'https://cdn.jsdelivr.net/npm/web-ifc-viewer@0.0.55/dist/IFC.min.js';
+        import { IfcViewerAPI } from 'https://cdn.jsdelivr.net/npm/ifcjs@0.0.54/dist/IFC.min.js';
 
         async function loadIFC() {
-            // Create a container for the viewer
+            // Get the container for the viewer
             const container = document.getElementById('viewer-container');
 
             // Initialize the viewer
             const viewer = new IfcViewerAPI({ container });
 
-            // Adjust viewer settings if needed
-            viewer.IFC.setWasmPath("https://cdn.jsdelivr.net/npm/web-ifc@latest/");
+            // Set the path to the WebAssembly (WASM) files
+            viewer.IFC.setWasmPath('https://cdn.jsdelivr.net/npm/web-ifc@latest/');
 
             // Load the IFC model
             await viewer.IFC.loadIfcUrl('path/to/your/ifc/file.ifc');
@@ -35,7 +39,8 @@
             viewer.context.fitToFrame();
         }
 
-        loadIFC();
+        // Load the IFC model when the page is loaded
+        window.onload = loadIFC;
     </script>
 </body>
 </html>
