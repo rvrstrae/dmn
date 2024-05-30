@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="definitions_13l3hls" name="definitions" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="14.1.1">
+  <decision id="decision_16kzq6j" name="IsAccessible">
+    <informationRequirement id="InformationRequirement_028zosu">
+      <requiredInput href="#InputData_1xzjzbi" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0wrh9ef">
+      <requiredInput href="#InputData_1ojgqf7" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_059ccfc">
+      <input id="input1" label="height_diff">
+        <inputExpression id="inputExpression1" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16vf6qx" label="height_diff">
+        <inputExpression id="LiteralExpression_1jez06p" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_09inv6a" label="slope">
+        <inputExpression id="LiteralExpression_02w3rat" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="IsAccessible" typeRef="boolean" />
+      <rule id="DecisionRule_0z9kgow">
+        <inputEntry id="UnaryTests_1tv5dst">
+          <text>&gt;0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09ugwu8">
+          <text>&lt;=100</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fagxlx">
+          <text>&lt;=10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l2offw">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tnmc86">
+        <inputEntry id="UnaryTests_0e0li5c">
+          <text>&gt;100</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ezx403">
+          <text>&lt;=250</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yohelf">
+          <text>&lt;=8.3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nwbtx7">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14d51gy">
+        <inputEntry id="UnaryTests_1nnfc2o">
+          <text>&gt;250</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j357e1">
+          <text>&lt;=500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qud0rt">
+          <text>&lt;=6.25</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dzkiov">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12sv0eo">
+        <inputEntry id="UnaryTests_1xzbzb6">
+          <text>&gt;500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ea4j62">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ud7d4v">
+          <text>&lt;=5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gzrstb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1xzjzbi" name="height_diff" />
+  <inputData id="InputData_1ojgqf7" name="slope" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1imr9yl">
+      <dmndi:DMNShape id="DMNShape_1wvx2pr" dmnElementRef="decision_16kzq6j">
+        <dc:Bounds height="80" width="180" x="200" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02hc31i" dmnElementRef="InputData_1xzjzbi">
+        <dc:Bounds height="45" width="125" x="157" y="207" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_01lcj4k" dmnElementRef="InformationRequirement_028zosu">
+        <di:waypoint x="220" y="207" />
+        <di:waypoint x="260" y="180" />
+        <di:waypoint x="260" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1cri86k" dmnElementRef="InputData_1ojgqf7">
+        <dc:Bounds height="45" width="125" x="297" y="207" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ntrbh2" dmnElementRef="InformationRequirement_0wrh9ef">
+        <di:waypoint x="360" y="207" />
+        <di:waypoint x="320" y="180" />
+        <di:waypoint x="320" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

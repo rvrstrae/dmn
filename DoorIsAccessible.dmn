@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="definitions_0atswqe" name="definitions" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="14.1.1">
+  <decision id="decision_1sevzfe" name="doorwidth">
+    <informationRequirement id="InformationRequirement_1rzg6zm">
+      <requiredInput href="#InputData_1u011kc" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_0b8c3mt">
+      <input id="input1" label="width" biodi:width="192">
+        <inputExpression id="inputExpression1" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="accessible" typeRef="boolean" />
+      <rule id="DecisionRule_107ye35">
+        <inputEntry id="UnaryTests_1aaxg7c">
+          <text>&gt;=900</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00jealh">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zbjt6y">
+        <inputEntry id="UnaryTests_1njakws">
+          <text>&lt;900</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x217tb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1u011kc" name="width" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1x6gx06">
+      <dmndi:DMNShape id="DMNShape_0yfc0yd" dmnElementRef="decision_1sevzfe">
+        <dc:Bounds height="80" width="180" x="350" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1rcw69r" dmnElementRef="InputData_1u011kc">
+        <dc:Bounds height="45" width="125" x="157" y="97" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_08iie96" dmnElementRef="InformationRequirement_1rzg6zm">
+        <di:waypoint x="282" y="120" />
+        <di:waypoint x="330" y="120" />
+        <di:waypoint x="350" y="120" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

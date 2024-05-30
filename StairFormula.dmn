@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="definitions_0nvp1m6" name="definitions" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="14.1.1">
+  <decision id="decision_0co324a" name="StairFormula">
+    <informationRequirement id="InformationRequirement_1jrq2pv">
+      <requiredInput href="#InputData_06brsqy" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1iucabh">
+      <requiredInput href="#InputData_0vpfot5" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_085ap2a">
+      <input id="input1" label="RiserHeight">
+        <inputExpression id="inputExpression1" typeRef="number">
+          <text>RiserHeight</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1nz2y14" label="RiserLength">
+        <inputExpression id="LiteralExpression_0dir17d" typeRef="number">
+          <text>RiserLength</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="StairFormula" name="StairFormula" typeRef="number" />
+      <rule id="DecisionRule_128442y">
+        <inputEntry id="UnaryTests_0qos1n6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xziw3v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ht3bn7">
+          <text>2*RiserHeight+RiserLength</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_06brsqy" name="RiserHeight" />
+  <inputData id="InputData_0vpfot5" name="RiserLength" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0txq4cg">
+      <dmndi:DMNShape id="DMNShape_0fwb1jt" dmnElementRef="decision_0co324a">
+        <dc:Bounds height="80" width="180" x="200" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1wcyqew" dmnElementRef="InputData_06brsqy">
+        <dc:Bounds height="45" width="125" x="167" y="207" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ekqaxk" dmnElementRef="InformationRequirement_1jrq2pv">
+        <di:waypoint x="230" y="207" />
+        <di:waypoint x="260" y="180" />
+        <di:waypoint x="260" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_17vovfy" dmnElementRef="InputData_0vpfot5">
+        <dc:Bounds height="45" width="125" x="297" y="207" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_00j1bkk" dmnElementRef="InformationRequirement_1iucabh">
+        <di:waypoint x="360" y="207" />
+        <di:waypoint x="320" y="180" />
+        <di:waypoint x="320" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
