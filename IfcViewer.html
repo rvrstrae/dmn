@@ -15,8 +15,9 @@
 <body>
     <div id="viewer-container"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/ifcjs@latest/dist/ifc.min.js"></script>
-    <script>
+    <script type="module">
+        import { IfcViewerAPI } from 'https://cdn.jsdelivr.net/npm/web-ifc-viewer@0.0.55/dist/IFC.min.js';
+
         async function loadIFC() {
             // Create a container for the viewer
             const container = document.getElementById('viewer-container');
