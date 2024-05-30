@@ -11,7 +11,38 @@
     <div id="viewer"></div>
 
     <script>
-        // Your JavaScript code to create the viewer goes here
+// Get the div element where you want to embed the viewer
+var container = document.getElementById('viewer');
+
+// Create a new Three.js scene
+var scene = new THREE.Scene();
+
+// Create a new Three.js perspective camera
+var camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+
+// Create a new Three.js WebGL renderer
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(container.offsetWidth, container.offsetHeight);
+container.appendChild(renderer.domElement);
+
+// Load the IFC file using IfcOpenShell
+var ifcLoader = new IfcOpenShell.IfcLoader();
+ifcLoader.setWasmPath('path/to/ifcopenshell.wasm');
+ifcLoader.load('path/to/your/ifc/file.ifc', function (ifcModel) {
+    // Convert the IFC data to a Three.js scene
+    var ifcGeometry = IfcOpenShell.Geom.SceneUtils.ifcToThreeJS(ifcModel);
+
+    // Add the IFC geometry to the scene
+    scene.add(ifcGeometry);
+
+    // Set the camera position and target
+    camera.position.set(0, 10, 20);
+    camera.lookAt(0, 0, 0);
+
+    // Render the scene
+    renderer.render(scene, camera);
+});
+
     </script>
 </body>
 </html>
