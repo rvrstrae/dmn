@@ -3,46 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFC Viewer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ifcopenshell-browser/v0.7.0/ifcopenshell.min.js"></script>
+    <title>IFC.js Viewer</title>
+    <style>
+        body { margin: 0; }
+        #viewer-container {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+        }
+    </style>
 </head>
 <body>
-    <div id="viewer"></div>
+    <div id="viewer-container"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/ifcjs@latest/dist/ifc.min.js"></script>
     <script>
-// Get the div element where you want to embed the viewer
-var container = document.getElementById('viewer');
+        async function loadIFC() {
+            // Create a container for the viewer
+            const container = document.getElementById('viewer-container');
 
-// Create a new Three.js scene
-var scene = new THREE.Scene();
+            // Initialize the viewer
+            const viewer = new IfcViewerAPI({ container });
 
-// Create a new Three.js perspective camera
-var camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            // Adjust viewer settings if needed
+            viewer.IFC.setWasmPath("https://cdn.jsdelivr.net/npm/web-ifc@latest/");
 
-// Create a new Three.js WebGL renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(container.offsetWidth, container.offsetHeight);
-container.appendChild(renderer.domElement);
+            // Load the IFC model
+            await viewer.IFC.loadIfcUrl('path/to/your/ifc/file.ifc');
 
-// Load the IFC file using IfcOpenShell
-var ifcLoader = new IfcOpenShell.IfcLoader();
-ifcLoader.setWasmPath('path/to/ifcopenshell.wasm');
-ifcLoader.load('HeartbreakHotel.ifc', function (ifcModel) {
-    // Convert the IFC data to a Three.js scene
-    var ifcGeometry = IfcOpenShell.Geom.SceneUtils.ifcToThreeJS(ifcModel);
+            // Adjust the camera to fit the model
+            viewer.context.fitToFrame();
+        }
 
-    // Add the IFC geometry to the scene
-    scene.add(ifcGeometry);
-
-    // Set the camera position and target
-    camera.position.set(0, 10, 20);
-    camera.lookAt(0, 0, 0);
-
-    // Render the scene
-    renderer.render(scene, camera);
-});
-
+        loadIFC();
     </script>
 </body>
 </html>
