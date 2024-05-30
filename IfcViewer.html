@@ -28,7 +28,7 @@ container.appendChild(renderer.domElement);
 // Load the IFC file using IfcOpenShell
 var ifcLoader = new IfcOpenShell.IfcLoader();
 ifcLoader.setWasmPath('path/to/ifcopenshell.wasm');
-ifcLoader.load('path/to/your/ifc/file.ifc', function (ifcModel) {
+ifcLoader.load('HeartbreakHotel.ifc', function (ifcModel) {
     // Convert the IFC data to a Three.js scene
     var ifcGeometry = IfcOpenShell.Geom.SceneUtils.ifcToThreeJS(ifcModel);
 
